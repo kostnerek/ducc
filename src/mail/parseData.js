@@ -19,7 +19,7 @@ const sumOfPrices = (books) => {
 }
 
 
-export const parseData = async (duccs) => {
+export const parseDataK = async (duccs) => {
     const date = new Date();
     const dateString = date.toISOString().slice(0, 10);
     const duccsLinks = await loadJsonFile("./src/links.json");
@@ -84,4 +84,51 @@ export const parseData = async (duccs) => {
             </body>
         </html>
     `
+}
+
+export const parseDataWSKD = async (duccs) => {
+    const date = new Date();
+    const dateString = date.toISOString().slice(0, 10);
+
+    const sumOfPrices = (books) => {
+        return books.reduce((acc, {bookPrice}) => {
+            return acc + bookPrice;
+        }, 0);
+    }
+
+    return `
+        <html>
+            <head>
+                <style>
+                    table, th, td {
+                        border: 1px solid black;
+                        border-collapse: collapse;
+                    }
+                    th, td {
+                        padding: 5px;
+                        text-align: left;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>Najtańsze ceny dnia ${dateString}</h1>
+                <table>
+                    <tr>
+                        <th><strong>Tytuł</strong></th>
+                        <th><strong>Cena</strong></th>
+                        <th><strong>Link</strong></th>
+                    </tr>
+                    ${duccs.map((book) => {
+                        const index = duccs.indexOf(book);
+                        return `<tr>
+                            <td><strong>${index}. Wujek Sknerus i Kaczor Donald - ${book.bookTitle}</strong></td>
+                            <td>${book.bookPrice} zł</td>
+                            <td><a href='${book.bookLink}'>Link</a></td>
+                        </tr>`
+                    }).join('')}
+                </table>
+                <h3>Suma ${sumOfPrices(duccs).toFixed(2)} zł</h3>
+            </body>
+        </html>
+    `;
 }

@@ -15,7 +15,7 @@ const sendMail = (to, subject, html) => {
     console.log('Sending mail...');
 
     let mailOptions = {
-        from: process.env.MAIL_USER,
+        from: 'JA',
         to,
         subject,
         html,
