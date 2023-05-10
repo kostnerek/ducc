@@ -8,13 +8,13 @@ dotenv.config();
 
 console.log(chalk.green('Starting puppeteer...'));
 
-/* engineK().then(async (result) => {
+engineK().then(async (result) => {
     console.log(chalk.green('Puppeteer finished.'));
     const date = new Date();
     const dateString = date.toISOString().slice(0, 10);    
     const html = await parseDataK(result)
     sendMail(process.env.MAIL_TO, `🔥Ceny kaczorków - Kaczogród [${dateString}]🔥`, html)
-}); */
+});
 
 
 scrapeWSKD().then(async (result) => {
