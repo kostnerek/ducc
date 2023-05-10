@@ -19,12 +19,10 @@ const sumOfPrices = (books) => {
 }
 
 
-export const parseData = async () => {
+export const parseData = async (duccs) => {
     const date = new Date();
     const dateString = date.toISOString().slice(0, 10);
-    const filename = `./results/${dateString}.json`;
     const duccsLinks = await loadJsonFile("./src/links.json");
-    const duccs = await loadJsonFile(filename);
 
     const parsed = {};
     //get cheapest price for each ducc
