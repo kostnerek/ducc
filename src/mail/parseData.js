@@ -121,7 +121,7 @@ export const parseDataWSKD = async (duccs) => {
                     ${duccs.map((book) => {
                         const index = duccs.indexOf(book);
                         return `<tr>
-                            <td><strong>${index}. Wujek Sknerus i Kaczor Donald - ${book.bookTitle}</strong></td>
+                            <td><strong>${index+1}. Wujek Sknerus i Kaczor Donald - ${book.bookTitle}</strong></td>
                             <td>${book.bookPrice} zł</td>
                             <td><a href='${book.bookLink}'>Link</a></td>
                         </tr>`
