@@ -12,5 +12,5 @@ app().then(async (result) => {
     const date = new Date();
     const dateString = date.toISOString().slice(0, 10);
     const html = await parseData(result)
-    sendMail("filip.kostecki00@gmail.com", `Ceny kaczorków z dnia ${dateString}`, html)
+    sendMail("filip.kostecki00@gmail.com", `🔥Ceny kaczorków z dnia ${dateString}🔥`, html)
 });
